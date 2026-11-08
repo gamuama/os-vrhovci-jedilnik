@@ -1,0 +1,22 @@
+JEDILNIK 09. – 13. 11. 2026
+PONEDELJEK 09. 11. 2026
+MALICA BIO pecivo s čokoladnimi zrni (1,3,7,8), ŠS jabolko, čaj
+KOSILO Porova juha (7), lazanja (1,3,7), solata s kitajskim zeljem
+P.MALICA Riževi vaflji, pomaranča
+TOREK 10. 11. 2026
+MALICA Mlečna polenta (7), banana
+KOSILO Kremna bučna juha (7), BIO polžki (1,3) s tunino omako (4) in zelenjavo, rdeča pesa
+P.MALICA Jabolko, grisini (1)
+SREDA 11. 11. 2026
+MALICA Marmelada, ovsen kruh (1), ŠS kaki
+KOSILO Piščančja bedra, dušeno rdeče zelje, pražen krompir, zelena solata
+P.MALICA Suho sadje, sir (7)
+ČETRTEK 12. 11. 2026
+MALICA Kamutov kruh (1), piščančji namaz (7), korenček, čaj
+KOSILO Ričet, kruh (1), sadje, sladica (1,3,7,8)
+P.MALICA Makova kajzerica (1,7), pomaranča
+PETEK 13. 11. 2026
+MALICA Sirov burek (1,3,7), tekoči jogurt (7), mandarina
+KOSILO Korenčkova juha (7), zelenjavna rižota z lečo
+P.MALICA Sadni jogurt (7), prepečenec (1)
+Opombe: test

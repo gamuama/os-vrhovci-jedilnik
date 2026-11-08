@@ -1,0 +1,38 @@
+{
+  "school": "OŠ Vrhovci",
+  "week_from": "2026-11-09",
+  "week_to": "2026-11-13",
+  "days": {
+    "ponedeljek": {
+      "date": "2026-11-09",
+      "dop_malica": "BIO pecivo s čokoladnimi zrni (1,3,7,8), ŠS jabolko, čaj",
+      "kosilo": "Porova juha (7), lazanja (1,3,7), solata s kitajskim zeljem",
+      "pop_malica": "Riževi vaflji, pomaranča"
+    },
+    "torek": {
+      "date": "2026-11-10",
+      "dop_malica": "Mlečna polenta (7), banana",
+      "kosilo": "Kremna bučna juha (7), BIO polžki (1,3) s tunino omako (4) in zelenjavo, rdeča pesa",
+      "pop_malica": "Jabolko, grisini (1)"
+    },
+    "sreda": {
+      "date": "2026-11-11",
+      "dop_malica": "Marmelada, ovsen kruh (1), ŠS kaki",
+      "kosilo": "Piščančja bedra, dušeno rdeče zelje, pražen krompir, zelena solata",
+      "pop_malica": "Suho sadje, sir (7)"
+    },
+    "cetrtek": {
+      "date": "2026-11-12",
+      "dop_malica": "Kamutov kruh (1), piščančji namaz (7), korenček, čaj",
+      "kosilo": "Ričet, kruh (1), sadje, sladica (1,3,7,8)",
+      "pop_malica": "Makova kajzerica (1,7), pomaranča"
+    },
+    "petek": {
+      "date": "2026-11-13",
+      "dop_malica": "Sirov burek (1,3,7), tekoči jogurt (7), mandarina",
+      "kosilo": "Korenčkova juha (7), zelenjavna rižota z lečo",
+      "pop_malica": "Sadni jogurt (7), prepečenec (1)"
+    }
+  },
+  "source_file": "2.tedenOBJAVA.pdf"
+}
