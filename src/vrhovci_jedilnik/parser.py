@@ -93,7 +93,12 @@ def parse_menu(text: str) -> Dict[str, Any]:
         block_end = day_matches[index + 1].start() if index + 1 < len(day_matches) else len(text)
         block = text[block_start:block_end]
         # Opombe in naslednje strani ne smejo postati del petkove popoldanske malice.
-        block = re.split(r"\bOpombe\s*:", block, maxsplit=1, flags=re.IGNORECASE)[0]
+        block = re.split(
+   	    r"\b(?:ALERGENI\s+V\s+ŽIVILIH|Opombe\s*:)",
+    	    block,
+    	    maxsplit=1,
+    	    flags=re.IGNORECASE,
+        )[0]
         meals = parse_day_block(block)
         days[normalized_day] = {
             "date": iso_date(day, month, year),
