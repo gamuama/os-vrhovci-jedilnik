@@ -1,3 +1,2 @@
-"""OŠ Vrhovci PDF jedilnik parser."""
-
-__version__ = "0.2.0"
+"""OŠ Vrhovci jedilnik."""
+__version__ = "0.3.0"

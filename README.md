@@ -59,3 +59,11 @@ Cron lahko teče vsak dan. Če JSON že vsebuje ciljni teden, updater konča bre
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+## v0.3.0 Domoticz
+```bash
+cp config.example.json config.json
+nano config.json
+PYTHONPATH=src python3 -m vrhovci_jedilnik --force --verbose
+```
+Za test brez objave uporabi `--no-domoticz`.

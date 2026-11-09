@@ -1,0 +1,17 @@
+{
+  "domoticz": {
+    "url": "http://DOMOTICZ-IP:8080",
+    "idx_danes": 151,
+    "idx_jutri": 152,
+    "username": "",
+    "password": ""
+  },
+  "display": {
+    "dop_malica": "Dop. malica",
+    "kosilo": "Kosilo",
+    "pop_malica": "Pop. malica",
+    "separator": "\n",
+    "ni_pouka": "Danes ni pouka.",
+    "ni_podatkov_jutri": "Jedilnik za naslednji šolski dan še ni objavljen."
+  }
+}

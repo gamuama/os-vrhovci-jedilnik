@@ -17,3 +17,9 @@
 - Spletni prenos in validacija, da preneseni PDF res pripada ciljnemu tednu.
 - Ohranjen lokalni PDF način.
 - Popravljeno rezanje bloka `ALERGENI V ŽIVILIH` iz petkove popoldanske malice.
+
+## 0.3.0 - 2026-11-09
+- Domoticz Text senzorja Danes (IDX 151) in Jutri (IDX 152).
+- Nastavitve v lokalnem config.json; config.example.json ostane v Git repozitoriju.
+- Jutri pomeni naslednji šolski dan in preskoči vikend.
+- Domoticz se posodobi tudi, ko prenos PDF naredi SKIP.
