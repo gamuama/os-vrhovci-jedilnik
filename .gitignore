@@ -8,3 +8,4 @@ data/*.txt
 data/*.log
 *.pdf
 !.gitkeep
+*.zip
