@@ -1,89 +1,61 @@
 # OŠ Vrhovci jedilnik
 
-Majhen Python projekt, ki iz tedenskega PDF jedilnika OŠ Vrhovci izdela strukturiran JSON.
+Python parser in samodejni updater tedenskega jedilnika OŠ Vrhovci.
 
-## Kaj naredi
+## v0.2.0
 
-- prebere lokalni PDF,
-- za pretvorbo uporabi `pdftotext -layout`,
-- prepozna obdobje tedna in dneve od ponedeljka do petka,
-- za vsak dan izloči dopoldansko malico, kosilo in popoldansko malico,
-- rezultat varno zapiše v JSON prek začasne datoteke in atomskega `os.replace`,
-- ob napaki ne prepiše zadnjega veljavnega JSON-a.
-
-## Zahteve
-
-- Python 3.9 ali novejši
-- paket `poppler-utils`, ki vsebuje `pdftotext`
-
-Raspberry Pi OS / Debian:
+Privzeti spletni način:
 
 ```bash
-sudo apt update
-sudo apt install -y python3 poppler-utils
+PYTHONPATH=src python3 -m vrhovci_jedilnik --verbose
 ```
 
-## Namestitev
+Obnašanje:
+
+- ponedeljek-petek: išče PDF za trenutni teden,
+- sobota-nedelja: išče PDF za naslednji teden,
+- če `data/jedilnik.json` že vsebuje vseh 5 dni ciljnega tedna, izpiše `SKIP` in ne prenaša ničesar,
+- `--force` ta pregled obide in prisilno ponovno prenese ter obdela PDF.
+
+Prisilna osvežitev:
 
 ```bash
-git clone git@github.com:TVOJ_GITHUB_USERNAME/os-vrhovci-jedilnik.git
-cd os-vrhovci-jedilnik
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e .
+PYTHONPATH=src python3 -m vrhovci_jedilnik --force --verbose
 ```
 
-## Uporaba
-
-PDF kopiraj v projekt, nato zaženi:
+Diagnostika:
 
 ```bash
-vrhovci-jedilnik ./2.tedenOBJAVA.pdf --output ./data/jedilnik.json
-```
-
-Ali brez namestitve paketa:
-
-```bash
-PYTHONPATH=src python3 -m vrhovci_jedilnik ./2.tedenOBJAVA.pdf --output ./data/jedilnik.json
-```
-
-Za diagnostični izpis pretvorjenega besedila:
-
-```bash
-vrhovci-jedilnik ./2.tedenOBJAVA.pdf \
-  --output ./data/jedilnik.json \
+PYTHONPATH=src python3 -m vrhovci_jedilnik \
   --text-output ./data/jedilnik.txt \
   --verbose
 ```
 
-## Preverjanje JSON-a
+Lokalni PDF način iz v0.1.x je še vedno podprt:
 
 ```bash
-python3 -m json.tool data/jedilnik.json
+PYTHONPATH=src python3 -m vrhovci_jedilnik ./2.tedenOBJAVA.pdf \
+  --output ./data/jedilnik.json \
+  --verbose
 ```
+
+## Zahteve
+
+- Python 3.9+
+- `pdftotext` iz paketa `poppler-utils`
+
+## Cron
+
+Vsak dan ob 06:15:
+
+```cron
+15 6 * * * cd /home/pi/domoticz/plugins/os-vrhovci-jedilnik && /usr/bin/env PYTHONPATH=src /usr/bin/python3 -m vrhovci_jedilnik >> data/update.log 2>&1
+```
+
+Cron lahko teče vsak dan. Če JSON že vsebuje ciljni teden, updater konča brez spremembe.
 
 ## Testi
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
-
-## Predlagana lokacija na Pi
-
-```text
-/home/pi/domoticz/plugins/os-vrhovci-jedilnik/
-```
-
-## Primer cron opravila
-
-Primer vsak dan ob 06:15. Pot do PDF-ja je za prvo verzijo lokalna in jo pozneje lahko zamenjamo z avtomatskim prenosom aktualnega PDF-ja.
-
-```cron
-15 6 * * * cd /home/pi/domoticz/plugins/os-vrhovci-jedilnik && /usr/bin/python3 -m vrhovci_jedilnik ./2.tedenOBJAVA.pdf --output ./data/jedilnik.json >> ./data/update.log 2>&1
-```
-
-## Naslednja faza
-
-- odkrivanje aktualnega PDF-ja na strani OŠ Vrhovci,
-- varen prenos samo ob spremembi,
-- opcijsko posodabljanje Domoticz Text senzorjev za danes in jutri.

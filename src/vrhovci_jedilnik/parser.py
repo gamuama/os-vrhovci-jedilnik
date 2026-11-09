@@ -94,10 +94,10 @@ def parse_menu(text: str) -> Dict[str, Any]:
         block = text[block_start:block_end]
         # Opombe in naslednje strani ne smejo postati del petkove popoldanske malice.
         block = re.split(
-   	    r"\b(?:ALERGENI\s+V\s+ŽIVILIH|Opombe\s*:)",
-    	    block,
-    	    maxsplit=1,
-    	    flags=re.IGNORECASE,
+            r"\b(?:ALERGENI\s+V\s+ŽIVILIH|Opombe\s*:)",
+            block,
+            maxsplit=1,
+            flags=re.IGNORECASE,
         )[0]
         meals = parse_day_block(block)
         days[normalized_day] = {
