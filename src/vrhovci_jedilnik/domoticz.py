@@ -22,6 +22,23 @@ def format_day(day, display, unavailable):
         f"{display.get('pop_malica','Pop. malica')}: {day.get('pop_malica','').strip()}",
     ))
 
+def format_week(menu, display):
+    day_labels = {
+        "ponedeljek": "PONEDELJEK",
+        "torek": "TOREK",
+        "sreda": "SREDA",
+        "cetrtek": "ČETRTEK",
+        "petek": "PETEK",
+    }
+    sections = []
+    for key in ("ponedeljek", "torek", "sreda", "cetrtek", "petek"):
+        day = menu.get("days", {}).get(key)
+        if not isinstance(day, dict):
+            continue
+        day_date = day.get("date", "")
+        sections.append(f"{day_labels[key]} {day_date}\n{format_day(day, display, '')}")
+    return "\n\n".join(sections)
+
 def update_sensor(cfg, idx, text):
     params = urllib.parse.urlencode({"type":"command","param":"udevice","idx":idx,"nvalue":0,"svalue":text})
     req = urllib.request.Request(f"{cfg['url']}/json.htm?{params}", headers={"User-Agent":"os-vrhovci-jedilnik/0.3.0"})
@@ -42,8 +59,11 @@ def publish_menu(path: Path, config, today=None, verbose=False):
     next_value = day_data(menu, next_date)
     text_today = format_day(today_value, display, display.get("ni_pouka", "Danes ni pouka."))
     text_next = format_day(next_value, display, display.get("ni_podatkov_jutri", "Jedilnik za naslednji šolski dan še ni objavljen."))
+    text_week = format_week(menu, display)
     update_sensor(cfg, cfg["idx_danes"], text_today)
     update_sensor(cfg, cfg["idx_jutri"], text_next)
+    update_sensor(cfg, cfg["idx_teden"], text_week)
     if verbose:
         print(f"Domoticz IDX {cfg['idx_danes']} posodobljen za danes.")
         print(f"Domoticz IDX {cfg['idx_jutri']} posodobljen za {next_date.isoformat()}.")
+        print(f"Domoticz IDX {cfg['idx_teden']} posodobljen s tedenskim jedilnikom.")

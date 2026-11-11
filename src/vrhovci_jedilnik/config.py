@@ -9,7 +9,7 @@ def load_config(path: Path):
     url = str(cfg.get("url", "")).strip().rstrip("/")
     if not url or "DOMOTICZ-IP" in url:
         raise ValueError("V config.json nastavi pravi domoticz.url.")
-    for key in ("idx_danes", "idx_jutri"):
+    for key in ("idx_danes", "idx_jutri", "idx_teden"):
         try: cfg[key] = int(cfg[key])
         except (KeyError, TypeError, ValueError): raise ValueError(f"Napačen domoticz.{key}.") from None
     cfg["url"] = url
